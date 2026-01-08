@@ -1,3 +1,11 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { Start } from './lib-frontend/start/start';
+
+export const routes: Routes = [
+  { path: '', component: Start },
+
+  { path: 'start', component: Start },
+
+  { path: '**', redirectTo: '' },
+];

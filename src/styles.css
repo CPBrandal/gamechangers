@@ -1,1 +1,335 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 900px at 20% 20%, #26304d 0%, #141824 45%, #0b0f1a 100%);
+  color: #e2e8f0;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  position: relative;
+}
+
+.ambient {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  filter: blur(40px);
+  opacity: 0.35;
+  border-radius: 999px;
+  transform: translate3d(0, 0, 0);
+  animation: float 10s ease-in-out infinite;
+}
+
+.blob-a {
+  left: -120px;
+  top: -160px;
+  background: radial-gradient(circle at 30% 30%, #00bcd4 0%, rgba(0, 188, 212, 0) 60%),
+    radial-gradient(circle at 60% 60%, #635bff 0%, rgba(99, 91, 255, 0) 55%);
+}
+
+.blob-b {
+  right: -140px;
+  bottom: -180px;
+  background: radial-gradient(circle at 40% 40%, #ff8a00 0%, rgba(255, 138, 0, 0) 60%),
+    radial-gradient(circle at 60% 60%, #eb5424 0%, rgba(235, 84, 36, 0) 55%);
+  animation-delay: -4s;
+}
+
+.grid {
+  position: absolute;
+  inset: -2px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
+  opacity: 0.25;
+}
+
+.main-card-wrapper {
+  position: relative;
+  width: min(560px, 92vw);
+  background: rgba(20, 24, 36, 0.72);
+  border-radius: 22px;
+  padding: 3rem 2.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(14px);
+  animation: enter 600ms ease-out forwards;
+}
+
+.auth0-logo {
+  width: 168px;
+  display: block;
+  margin: 0 auto 1.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeUp 700ms ease-out 120ms forwards;
+}
+
+.main-title {
+  margin: 0;
+  text-align: center;
+  font-size: 2.65rem;
+  letter-spacing: -0.03em;
+  color: #f7fafc;
+  opacity: 0;
+  animation: fadeUp 700ms ease-out 220ms forwards;
+}
+
+.subtitle {
+  margin: 0.75rem 0 2rem;
+  text-align: center;
+  color: rgba(226, 232, 240, 0.76);
+  font-size: 1.1rem;
+  opacity: 0;
+  animation: fadeUp 700ms ease-out 320ms forwards;
+}
+
+.action-card {
+  background: rgba(45, 49, 60, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 2rem;
+  display: grid;
+  gap: 1.25rem;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  animation: fadeUp 700ms ease-out 420ms forwards;
+}
+
+.action-text {
+  margin: 0;
+  color: rgba(203, 213, 224, 0.95);
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+
+.fineprint {
+  color: rgba(226, 232, 240, 0.6);
+  font-size: 0.95rem;
+}
+
+.button {
+  position: relative;
+  padding: 1.05rem 2.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  outline: none;
+  overflow: hidden;
+}
+
+.button:focus-visible {
+  box-shadow: 0 0 0 4px rgba(99, 179, 237, 0.55), 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+
+.button .button-label {
+  position: relative;
+  z-index: 1;
+}
+
+.button .button-glow {
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.18), transparent 60%);
+  opacity: 0.9;
+}
+
+.button.login {
+  background: linear-gradient(135deg, #00bcd4 0%, #635bff 55%, #8b5cf6 100%);
+  color: #0b0f1a;
+}
+
+.button.login:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.button.logout {
+  background: linear-gradient(135deg, #ff8a00 0%, #eb5424 70%);
+  color: #0b0f1a;
+}
+
+.button.logout:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.loading-state {
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  color: rgba(160, 174, 192, 0.95);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.error-state {
+  background: rgba(197, 48, 48, 0.92);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.error-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.error-message {
+  font-size: 1.05rem;
+  margin-top: 0.25rem;
+}
+
+.error-sub-message {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.logged-in-section {
+  display: grid;
+  gap: 1.25rem;
+  justify-items: center;
+}
+
+.logged-in-message {
+  color: #68d391;
+  font-weight: 700;
+}
+
+.profile-card {
+  width: 100%;
+  background: rgba(45, 49, 60, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.profile {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.profile-picture {
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 3px solid rgba(99, 179, 237, 0.85);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.5);
+  transition: transform 180ms ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.04);
+}
+
+.profile-text {
+  text-align: center;
+}
+
+.profile-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #f7fafc;
+}
+
+.profile-email {
+  margin-top: 0.25rem;
+  font-size: 1.05rem;
+  color: rgba(226, 232, 240, 0.72);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
+@media (max-width: 600px) {
+  .main-card-wrapper {
+    padding: 2.25rem 1.5rem;
+  }
+
+  .main-title {
+    font-size: 2.1rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

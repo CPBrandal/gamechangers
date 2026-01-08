@@ -1,0 +1,46 @@
+<div class="app-container">
+  <div class="ambient" aria-hidden="true">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="grid"></div>
+  </div>
+
+  <div class="main-card-wrapper">
+    <img
+      src="https://cdn.auth0.com/quantum-assets/dist/latest/logos/auth0/auth0-lockup-en-ondark.png"
+      alt="Auth0 Logo"
+      class="auth0-logo"
+      loading="lazy"
+    />
+
+    <h1 class="main-title">Welcome</h1>
+    <p class="subtitle">Sign in to continue</p>
+
+    @if (auth.isLoading$ | async) {
+    <div class="loading-state">
+      <div class="loading-text">Loading…</div>
+    </div>
+    } @if (auth.error$ | async; as error) {
+    <div class="error-state" role="alert">
+      <div class="error-title">Oops</div>
+      <div class="error-message">Something went wrong</div>
+      <div class="error-sub-message">{{ error.message }}</div>
+    </div>
+    } @if (!(auth.isLoading$ | async) && !(auth.error$ | async)) { @if (auth.isAuthenticated$ |
+    async) {
+    <div class="logged-in-section">
+      <div class="logged-in-message">Successfully authenticated</div>
+      <div class="profile-card">
+        <app-profile />
+      </div>
+      <app-logout-button />
+    </div>
+    } @else {
+    <div class="action-card">
+      <p class="action-text">Log in with Auth0 to access your account.</p>
+      <app-login-button />
+      <div class="fineprint">Don’t have an account? Use your Auth0 tenant’s sign up settings.</div>
+    </div>
+    } }
+  </div>
+</div>

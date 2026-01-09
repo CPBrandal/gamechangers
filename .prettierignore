@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.angular/
+
+# Coverage
+coverage/
+
+# IDE
+.idea/
+.vscode/
+
+# Misc
+*.min.js
+*.min.css
+package-lock.json
+
+# Generated files
+*.generated.*
+

@@ -15,8 +15,6 @@ export class LoginButtonComponent {
   private auth = inject(AuthService);
 
   loginWithRedirect(): void {
-    this.auth.loginWithRedirect();
+    this.auth.loginWithRedirect().subscribe();
   }
 }
-
-

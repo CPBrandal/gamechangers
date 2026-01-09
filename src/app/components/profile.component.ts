@@ -34,5 +34,3 @@ import { AuthService } from '@auth0/auth0-angular';
 export class ProfileComponent {
   protected auth = inject(AuthService);
 }
-
-
